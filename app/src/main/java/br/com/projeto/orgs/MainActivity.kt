@@ -9,9 +9,6 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val view = TextView(this)
-        view.setText("Cesta de Frutas")
-        setContentView(view)
+        setContentView(R.layout.activity_main)
     }
-
 }
