@@ -20,24 +20,26 @@ class MainActivity : Activity() {
 //        val valor = findViewById<TextView>(R.id.valor)
 //        valor.text = "19.99"
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerView.adapter = ListaProdutosAdapter(context = this, produtos = listOf(
-            Produto(
-                nome = "Cesta de Frutas",
-                descricao = "Banana, pera, uva",
-                valor = BigDecimal("10.87")
-            ),
+        recyclerView.adapter = ListaProdutosAdapter(
+            context = this, produtos = listOf(
+                Produto(
+                    nome = "Cesta de Frutas",
+                    descricao = "Banana, pera, uva",
+                    valor = BigDecimal("10.87")
+                ),
 
-            Produto(
-                nome = "Cesta de Frutas 2",
-                descricao = "Melancia, abacate, morango",
-                valor = BigDecimal("14.67")
-            ),
+                Produto(
+                    nome = "Cesta de Frutas 2",
+                    descricao = "Melancia, abacate, morango",
+                    valor = BigDecimal("14.67")
+                ),
 
-            Produto(
-                nome = "Cesta de Frutas 3",
-                descricao = "Mamao, abacaxi, banana",
-                valor = BigDecimal("14.67")
+                Produto(
+                    nome = "Cesta de Frutas 3",
+                    descricao = "Mamao, abacaxi, banana",
+                    valor = BigDecimal("14.67")
+                )
             )
-        ))
+        )
     }
 }
