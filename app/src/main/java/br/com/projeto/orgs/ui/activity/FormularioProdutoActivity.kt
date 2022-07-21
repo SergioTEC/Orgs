@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import br.com.projeto.orgs.R
+import br.com.projeto.orgs.dao.ProdutosDao
 import br.com.projeto.orgs.model.Produto
 import java.math.BigDecimal
 
@@ -37,6 +38,9 @@ class FormularioProdutoActivity :
             )
 
             Log.i("FormularioProduto", "onCreate: $produtoNovo")
+            val dao = ProdutosDao()
+            dao.adiciona(produtoNovo)
+            Log.i("FormularioProduto", "onCreate: ${dao.buscaTodos()}")
         }
     }
 }
