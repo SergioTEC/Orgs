@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val dao = ProdutosDao()
         Log.i("MainActivity", "onCreate: ${dao.buscaTodos()}")
@@ -27,6 +31,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             val intent = Intent(this, FormularioProdutoActivity::class.java)
             startActivity(intent)
         }
-
     }
 }

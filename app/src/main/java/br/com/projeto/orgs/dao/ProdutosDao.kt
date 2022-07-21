@@ -4,8 +4,6 @@ import br.com.projeto.orgs.model.Produto
 
 class ProdutosDao {
 
-    private val produtos = mutableListOf<Produto>()
-
     fun adiciona(produto: Produto) {
         produtos.add(produto)
     }
@@ -14,4 +12,7 @@ class ProdutosDao {
         return produtos.toList()
     }
 
+    companion object {
+        private val produtos = mutableListOf<Produto>()
+    }
 }
