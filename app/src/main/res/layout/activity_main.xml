@@ -5,31 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salada de frutas"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </TextView>
-
-    <TextView
-        android:id="@+id/descricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Laranja, banana e abacaxi"
-        app:layout_constraintTop_toBottomOf="@+id/nome"
-        app:layout_constraintStart_toStartOf="@+id/nome">
-    </TextView>
-
-    <TextView
-        android:id="@+id/valor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="12.99"
-        app:layout_constraintTop_toBottomOf="@+id/descricao"
-        app:layout_constraintStart_toStartOf="@+id/descricao">
-    </TextView>
+        tools:listitem="@layout/produto_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
