@@ -4,7 +4,9 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto.orgs.R
+import br.com.projeto.orgs.model.Produto
 import br.com.projeto.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
+import java.math.BigDecimal
 
 class MainActivity : Activity() {
 
@@ -18,7 +20,23 @@ class MainActivity : Activity() {
 //        val valor = findViewById<TextView>(R.id.valor)
 //        valor.text = ("12.59")
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = ListaProdutosAdapter()
-
+        recyclerView.adapter = ListaProdutosAdapter(context = this, produtos = listOf(
+                Produto(
+                    nome = "Laranja",
+                    descricao = "Laranja 1",
+                    valor = BigDecimal("12.99")
+                ),
+                Produto(
+                    nome = "Banana",
+                    descricao = "Banana 1",
+                    valor = BigDecimal("15.99")
+                ),
+                Produto(
+                    nome = "Abacaxi",
+                    descricao = "Abacaxi 1",
+                    valor = BigDecimal("10.99")
+                )
+            )
+        )
     }
 }
