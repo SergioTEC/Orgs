@@ -2,17 +2,17 @@ package br.com.projeto.orgs.ui.activity
 
 import android.app.Activity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto.orgs.R
 import br.com.projeto.orgs.model.Produto
 import br.com.projeto.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
 import java.math.BigDecimal
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 //        val nome = findViewById<TextView>(R.id.nome)
 //        nome.text = ("Cesta de Frutas")
 //        val descricao = findViewById<TextView>(R.id.descricao)
