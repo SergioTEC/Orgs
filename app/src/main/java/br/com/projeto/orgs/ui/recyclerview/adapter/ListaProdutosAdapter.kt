@@ -3,9 +3,13 @@ package br.com.projeto.orgs.ui.recyclerview.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto.orgs.databinding.ProdutoItemBinding
 import br.com.projeto.orgs.model.Produto
+import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.*
 
 class ListaProdutosAdapter(
     private val context: Context,
@@ -21,7 +25,13 @@ class ListaProdutosAdapter(
             val descricao = binding.produtoItemDescricao
             descricao.text = produto.descricao
             val valor = binding.produtoItemValor
-            valor.text = produto.valor.toPlainString()
+            val valorMoeda: String = formataMoeda(produto.valor)
+            valor.text = valorMoeda
+        }
+
+        private fun formataMoeda(valor: BigDecimal): String {
+            val formatador: NumberFormat = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+            return formatador.format(valor)
         }
     }
 
