@@ -7,9 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.projeto.orgs.R
 import br.com.projeto.orgs.dao.ProdutosDao
+import br.com.projeto.orgs.databinding.ActivityFormularioImagemBinding
 import br.com.projeto.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.projeto.orgs.databinding.ActivityListaProdutosBinding
 import br.com.projeto.orgs.model.Produto
+import coil.load
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario_produto) {
@@ -23,9 +25,19 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         configuraBotaoSalvar()
         setContentView(binding.root)
         binding.activityFormularioProdutoImagem.setOnClickListener {
+
+            val bindingFormularioImagem = ActivityFormularioImagemBinding.inflate(layoutInflater)
+            bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener{
+                val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
+                bindingFormularioImagem.formularioImagemImageview.load(url)
+            }
+
             AlertDialog.Builder(this)
-                .setView(R.layout.activity_formulario_imagem)
-                .setPositiveButton("Confirmar") { _, _ -> }
+                .setView(bindingFormularioImagem.root)
+                .setPositiveButton("Confirmar") { _, _ ->
+                    val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
+                    binding.activityFormularioProdutoImagem.load(url)
+                }
                 .setNegativeButton("Cancelar") { _, _ -> }
                 .show()
         }

@@ -23,7 +23,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintStart_toEndOf="@id/produto_item_imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Salada de frutas" />
 
@@ -57,7 +57,7 @@
             tools:text="12.99" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/produto_item_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
