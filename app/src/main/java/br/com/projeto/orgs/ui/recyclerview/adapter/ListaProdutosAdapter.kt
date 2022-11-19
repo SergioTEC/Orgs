@@ -19,7 +19,8 @@ class ListaProdutosAdapter(
 
     private val produtos = produtos.toMutableList()
 
-    class ViewHolder(private val binding: ProdutoItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ProdutoItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun vincula(produto: Produto) {
             val nome = binding.produtoItemNome
             nome.text = produto.nome
@@ -28,6 +29,7 @@ class ListaProdutosAdapter(
             val valor = binding.produtoItemValor
             val valorMoeda: String = formataMoeda(produto.valor)
             valor.text = valorMoeda
+            binding.produtoItemImageView.load(produto.imagem)
         }
 
         private fun formataMoeda(valor: BigDecimal): String {

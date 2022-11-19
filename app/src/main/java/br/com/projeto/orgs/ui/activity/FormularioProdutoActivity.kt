@@ -20,6 +20,8 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         ActivityFormularioProdutoBinding.inflate(layoutInflater)
     }
 
+    private var url: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         configuraBotaoSalvar()
@@ -27,15 +29,15 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         binding.activityFormularioProdutoImagem.setOnClickListener {
 
             val bindingFormularioImagem = ActivityFormularioImagemBinding.inflate(layoutInflater)
-            bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener{
-                val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
+            bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener {
+                url = bindingFormularioImagem.formularioImagemUrl.text.toString()
                 bindingFormularioImagem.formularioImagemImageview.load(url)
             }
 
             AlertDialog.Builder(this)
                 .setView(bindingFormularioImagem.root)
                 .setPositiveButton("Confirmar") { _, _ ->
-                    val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
+                    url = bindingFormularioImagem.formularioImagemUrl.text.toString()
                     binding.activityFormularioProdutoImagem.load(url)
                 }
                 .setNegativeButton("Cancelar") { _, _ -> }
@@ -69,7 +71,8 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         return Produto(
             nome = nome,
             descricao = descricao,
-            valor = valor
+            valor = valor,
+            imagem = url
         )
     }
 }
