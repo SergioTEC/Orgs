@@ -10,7 +10,9 @@ import br.com.projeto.orgs.dao.ProdutosDao
 import br.com.projeto.orgs.databinding.ActivityFormularioImagemBinding
 import br.com.projeto.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.projeto.orgs.databinding.ActivityListaProdutosBinding
+import br.com.projeto.orgs.extensions.tentaCarregarImagem
 import br.com.projeto.orgs.model.Produto
+import br.com.projeto.orgs.ui.dialog.FormularioImagemDialog
 import coil.load
 import java.math.BigDecimal
 
@@ -27,21 +29,10 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         configuraBotaoSalvar()
         setContentView(binding.root)
         binding.activityFormularioProdutoImagem.setOnClickListener {
-
-            val bindingFormularioImagem = ActivityFormularioImagemBinding.inflate(layoutInflater)
-            bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener {
-                url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                bindingFormularioImagem.formularioImagemImageview.load(url)
+            FormularioImagemDialog(this).mostra { imagem ->
+                url = imagem
+                binding.activityFormularioProdutoImagem.tentaCarregarImagem(url)
             }
-
-            AlertDialog.Builder(this)
-                .setView(bindingFormularioImagem.root)
-                .setPositiveButton("Confirmar") { _, _ ->
-                    url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                    binding.activityFormularioProdutoImagem.load(url)
-                }
-                .setNegativeButton("Cancelar") { _, _ -> }
-                .show()
         }
     }
 
