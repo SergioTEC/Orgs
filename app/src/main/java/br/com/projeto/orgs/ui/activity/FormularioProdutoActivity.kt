@@ -1,19 +1,14 @@
 package br.com.projeto.orgs.ui.activity
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.projeto.orgs.R
 import br.com.projeto.orgs.dao.ProdutosDao
-import br.com.projeto.orgs.databinding.ActivityFormularioImagemBinding
 import br.com.projeto.orgs.databinding.ActivityFormularioProdutoBinding
-import br.com.projeto.orgs.databinding.ActivityListaProdutosBinding
 import br.com.projeto.orgs.extensions.tentaCarregarImagem
 import br.com.projeto.orgs.model.Produto
 import br.com.projeto.orgs.ui.dialog.FormularioImagemDialog
-import coil.load
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario_produto) {
@@ -28,8 +23,9 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         super.onCreate(savedInstanceState)
         configuraBotaoSalvar()
         setContentView(binding.root)
+        title = "Cadastrar produto"
         binding.activityFormularioProdutoImagem.setOnClickListener {
-            FormularioImagemDialog(this).mostra { imagem ->
+            FormularioImagemDialog(this).mostra(url) { imagem ->
                 url = imagem
                 binding.activityFormularioProdutoImagem.tentaCarregarImagem(url)
             }
@@ -42,6 +38,7 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         botaoSalvar.setOnClickListener {
             val produtoNovo = criaProduto()
             dao.adiciona(produtoNovo)
+            Toast.makeText(this, "Produto Salvo", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
