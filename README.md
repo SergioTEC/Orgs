@@ -11,6 +11,6 @@ através dos cursos oferecidos pela Alura.
 ## Tela principal
 <img src="https://user-images.githubusercontent.com/48964231/186790133-46afb2fd-0825-472b-bc5c-3b46bc88a284.jpg" width="350">
 
-## Tela de adição de produtos
+## Tela de cadastro de produtos
 <img src="https://user-images.githubusercontent.com/48964231/186790176-f71f92d0-d96b-4cca-a3a6-f32a1254b30e.jpg" width="350">,
 <img src="https://user-images.githubusercontent.com/48964231/186790218-994045fb-f7c8-4e02-a584-0f063952cffe.jpg" width="350">
