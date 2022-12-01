@@ -2,6 +2,8 @@ package br.com.projeto.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.projeto.orgs.R
 import br.com.projeto.orgs.dao.ProdutosDao
@@ -43,5 +45,12 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
     private fun configuraRecyclerView() {
         val recyclerView = binding.activityListaProdutoRecyclerView
         recyclerView.adapter = adapter
+        adapter.quandoClicaNoItemListener = {
+            val intent = Intent(this, DetalhesProdutoActivity::class.java)
+//                .apply {
+//                putExtra("produto_nome", it.nome)
+//            }
+            startActivity(intent)
+        }
     }
 }

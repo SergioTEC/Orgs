@@ -4,27 +4,37 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.projeto.orgs.R
 import br.com.projeto.orgs.databinding.ProdutoItemBinding
 import br.com.projeto.orgs.extensions.tentaCarregarImagem
 import br.com.projeto.orgs.model.Produto
-import coil.load
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.*
 
 class ListaProdutosAdapter(
     private val context: Context,
-    produtos: List<Produto>
+    produtos: List<Produto>,
+    var quandoClicaNoItemListener: (produto: Produto) -> Unit = {}
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
     private val produtos = produtos.toMutableList()
 
-    class ViewHolder(private val binding: ProdutoItemBinding) :
+    inner class ViewHolder(private val binding: ProdutoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private lateinit var produto: Produto
+
+        init {
+            itemView.setOnClickListener {
+                if (::produto.isInitialized) {
+                    quandoClicaNoItemListener(produto)
+                }
+            }
+        }
+
         fun vincula(produto: Produto) {
+            this.produto = produto
             val nome = binding.produtoItemNome
             nome.text = produto.nome
             val descricao = binding.produtoItemDescricao
