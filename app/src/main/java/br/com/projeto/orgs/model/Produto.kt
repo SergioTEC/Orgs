@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
+// implementação do Parcelable com o plugin parcelize
 @Parcelize
 data class Produto(
     val nome: String,
